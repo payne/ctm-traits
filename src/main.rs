@@ -14,14 +14,12 @@ impl LandCapable for Sedan {
 }
 
 struct SUV;
-impl LandCapable for SUV {
-    fn drive(&self) {
-        println!("SUV is driving!");
-    }
-}
+impl LandCapable for SUV {}
 
 trait LandCapable {
-    fn drive(&self);
+    fn drive(&self) {
+        println!("Driving! -- default implementation");
+    }
 }
 
 // Note: dyn and impl are options here with performance tradeoffs
