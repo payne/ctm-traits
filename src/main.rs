@@ -1,3 +1,12 @@
+struct Sedan;
+impl Sedan {
+    fn drive(&self) {
+        print!("Sedan is driving!");
+    }
+}
+
+
 fn main() {
-    println!("Hello, world!");
+    let car = Sedan;
+    car.drive();
 }
