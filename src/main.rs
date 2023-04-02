@@ -22,6 +22,25 @@ trait LandCapable {
     }
 }
 
+trait WaterCapable {
+    fn float(&self) {
+        println!("Floating! -- default implementation");
+    }
+}
+
+// supertrait example
+trait Amphibious: WaterCapable + LandCapable {}
+
+struct Hovercraft;
+impl Amphibious for Hovercraft {}
+impl LandCapable for Hovercraft {}
+impl WaterCapable for Hovercraft {}
+
+fn traverse_frozen_lake(vehicle: &impl Amphibious) {
+    vehicle.drive();
+    vehicle.float();
+}
+
 // Note: dyn and impl are options here with performance tradeoffs
 // ts 4:20 in the Code to the Moon video
 // dyn uses a fat pointer and is slower -- two pointers:
@@ -34,6 +53,9 @@ fn road_trip(vehicle: &impl LandCapable) {
 }
 
 fn main() {
+    let hc = Hovercraft;
+    traverse_frozen_lake(&hc);
+
     let car = Sedan::new("Red".to_string());
     road_trip(&car);
     let suv = SUV;
