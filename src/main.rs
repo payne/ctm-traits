@@ -1,4 +1,3 @@
-use std::ops::SubAssign;
 
 struct Sedan {
     color: String,
@@ -31,7 +30,7 @@ fn road_trip(vehicle: &impl LandCapable) {
 
 fn main() {
     let car = Sedan::new("Red".to_string());
-    car.drive();
+    road_trip(&car);
     let suv = SUV;
-    suv.drive();
+    road_trip(&suv);
 }
