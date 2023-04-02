@@ -24,6 +24,13 @@ trait LandCapable {
     fn drive(&self);
 }
 
+// Note: dyn and impl are options here with performance tradeoffs
+// ts 4:20 in the Code to the Moon video
+// dyn uses a fat pointer and is slower -- two pointers:
+// one to the data and one to the vtable
+//
+// impl uses a thin pointer and is faster -- one pointer
+// impl -- is static dispatch
 fn road_trip(vehicle: &impl LandCapable) {
     vehicle.drive();
 }
